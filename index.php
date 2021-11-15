@@ -14,28 +14,25 @@ print_r($meses);
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
+    $nombre = filter_input(INPUT_GET, 'nombre', FILTER_SANITIZE_STRING);
+    $apellido = filter_input(INPUT_GET, 'apellido', FILTER_SANITIZE_STRING);
+    $email = filter_input(INPUT_GET, 'email', FILTER_SANITIZE_STRING);
+    $telefono = filter_input(INPUT_GET, 'telefono', FILTER_SANITIZE_STRING);
+    $postal = filter_input(INPUT_GET, 'postal', FILTER_SANITIZE_STRING);
+    $ciudad = filter_input(INPUT_GET, 'ciudad', FILTER_SANITIZE_STRING);
+    $domicilio = filter_input(INPUT_GET, 'domicilio', FILTER_SANITIZE_STRING);
+    $contraseña = filter_input(INPUT_GET, 'contraseña', FILTER_SANITIZE_STRING);
 
 
 ?>
+
+
 <!DOCTYPE html>
 <html lang="es">
 
 <head>
     <meta charset="UTF-8">
-    <title>Ejercicio 2</title>
+    <title>Practica 5</title>
     <link rel="stylesheet" href="css/style.css">
     <script src="script.js"></script>
 </head>
