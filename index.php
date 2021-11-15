@@ -1,7 +1,7 @@
 <?php
 
     $meses = [];
-    $string = file_get_contents("archivo.txt");
+    $string = file_get_contents("archivo.txt");aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
     $array = explode("\n",$string);
     foreach ($array as $fila){
         $item = explode(" ",$fila);
