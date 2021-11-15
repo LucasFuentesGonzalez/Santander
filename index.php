@@ -1,7 +1,7 @@
 <?php
 
     $meses = [];
-    $string = file_get_contents("archivo.txt");aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+    $string = file_get_contents("archivo.txt");
     $array = explode("\n",$string);
     foreach ($array as $fila){
         $item = explode(" ",$fila);
@@ -42,9 +42,9 @@ print_r($meses);
     <script src="script.js"></script>
 </head>
 <?php
-$muestra = [
-    'nombre' => 'Jorge',
-]
+    $muestra = [
+            'nombre' => 'Jorge',
+    ]
 ?>
 
 <body>
@@ -93,5 +93,4 @@ $muestra = [
 </body>
 
 </html>
-
 
