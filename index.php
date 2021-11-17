@@ -1,40 +1,39 @@
 <?php
 
-    $meses = [];
-    $string = file_get_contents("archivo.txt");
-    $array = explode("\n",$string);
-    foreach ($array as $fila){
-        $item = explode(" ",$fila);
-        $meses[] = [
-            'numero' => $item[0],
-            'nombre' => $item[1]
-        ];
-    }
-print_r($meses);
+$meses = [];
+$string = file_get_contents("archivo.txt");
+$array = explode("\n",$string);
+foreach ($array as $fila){
+    $item = explode(" ",$fila);
+    $meses[] = [
+        'numero' => $item[0],
+        'nombre' => $item[0]
+    ];
+}
 
 
 
-    $nombre = filter_input(INPUT_GET, 'nombre', FILTER_SANITIZE_STRING);
-    $apellido = filter_input(INPUT_GET, 'apellido', FILTER_SANITIZE_STRING);
-    $email = filter_input(INPUT_GET, 'email', FILTER_SANITIZE_STRING);
-    $telefono = filter_input(INPUT_GET, 'telefono', FILTER_SANITIZE_STRING);
-    $postal = filter_input(INPUT_GET, 'postal', FILTER_SANITIZE_STRING);
-    $ciudad = filter_input(INPUT_GET, 'ciudad', FILTER_SANITIZE_STRING);
-    $domicilio = filter_input(INPUT_GET, 'domicilio', FILTER_SANITIZE_STRING);
-    $contraseña = filter_input(INPUT_GET, 'contraseña', FILTER_SANITIZE_STRING);
+
+$nombre = filter_input(INPUT_GET, 'nombre', FILTER_SANITIZE_STRING);
+$apellido = filter_input(INPUT_GET, 'apellido', FILTER_SANITIZE_STRING);
+$email = filter_input(INPUT_GET, 'email', FILTER_SANITIZE_STRING);
+$telefono = filter_input(INPUT_GET, 'telefono', FILTER_SANITIZE_STRING);
+$postal = filter_input(INPUT_GET, 'postal', FILTER_SANITIZE_STRING);
+$ciudad = filter_input(INPUT_GET, 'ciudad', FILTER_SANITIZE_STRING);
+$domicilio = filter_input(INPUT_GET, 'domicilio', FILTER_SANITIZE_STRING);
+$password = filter_input(INPUT_GET, 'contraseña', FILTER_SANITIZE_STRING);
 
 
 ?>
-
 
 <!DOCTYPE html>
 <html lang="es">
 
 <head>
     <meta charset="UTF-8">
-    <title>Practica 5</title>
+    <title>Ejercicio 2</title>
     <link rel="stylesheet" href="css/style.css">
-    <script src="script.js"></script>
+
 </head>
 <?php
     $muestra = [
@@ -52,15 +51,11 @@ print_r($meses);
 <body>
 
 <div id="contenedor">
-    <div clas
-         s="header">
-        <div>
-
-        </div>
+    <div class="header">
         <h1>¡Bienvenido a Banco Santander!</h1>
         <h2><b>Contraseña aceptada.</b></h2><br /><br />
 
-        <form name="myForm" action="/action_page.php" method="post">
+        <form name="myForm" action="respuestas.php" method="post">
 
             <label for="fnombre">Nombre:</label>
             <input type="text" name="nombre" id="nombre" value="<?php echo $muestra['nombre'] ?>"><br><br>
@@ -84,9 +79,33 @@ print_r($meses);
             <input id="domicilio" name="domicilio" type='country' value="<?php echo $muestra['domicilio'] ?>"><br><br>
 
             <label for="fcontraseña">Contraseña:</label>
-            <input type="text" name="contraseña" id="contraseña"  value="<?php echo $muestra['contraseña'] ?>" ><br /><br />
+            <input type="text" name="contraseña" id="contraseña"  value="<?php echo $muestra['contraseña'] ?>" ><br><br><br><br>
 
-            <input type="button" value="Confirmar" onClick="verificar()">
+            <select name="transporte">
+
+                <option value="Seleccione ciudad">Seleccione ciudad</option>
+
+                <?php
+                define("fileName", "archivo.txt");
+                global $ciudades;
+                global $opciones;
+                $lineas=file_get_contents(fileName);
+                $ciudades=explode("\n",$lineas);
+
+                foreach($ciudades as $ciudad){
+                    $opciones.='<option value="'.$ciudad.'">'.$ciudad.'</option>';
+                }
+                echo $opciones;
+            ?>
+
+                </option>
+
+            </select>
+            <br><br><br>
+            <input type="submit" value="Enviar este formulario"/>
+
+            <input type="reset" value="Restablecer"/>
+
         </form>
 
     </div>
@@ -95,4 +114,3 @@ print_r($meses);
 </body>
 
 </html>
-
