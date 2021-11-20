@@ -11,45 +11,63 @@
         ];
     }
 
-
-    $nombre = filter_input(INPUT_GET, 'nombre', FILTER_SANITIZE_STRING);
-    $apellido = filter_input(INPUT_GET, 'apellido', FILTER_SANITIZE_STRING);
-    $email = filter_input(INPUT_GET, 'email', FILTER_SANITIZE_STRING);
-    $telefono = filter_input(INPUT_GET, 'telefono', FILTER_SANITIZE_STRING);
-    $postal = filter_input(INPUT_GET, 'postal', FILTER_SANITIZE_STRING);
-    $ciudad = filter_input(INPUT_GET, 'ciudad', FILTER_SANITIZE_STRING);
-    $domicilio = filter_input(INPUT_GET, 'domicilio', FILTER_SANITIZE_STRING);
-    $contrasena = filter_input(INPUT_GET, 'contraseña', FILTER_SANITIZE_STRING);
-    echo "<br>";
-
-    $uno ="/^[a-zA-Z\s]*$/";
-    $hola = "hola45";
-    $uno1 = preg_match($uno,$hola);
-    echo $uno1;
-    echo $hola;
-    echo $nombre;
+    $muestra = [
+        'nombre' => 'JORGE',
+        'apellido' => 'Fuentes',
+        'email' => 'jorgeylucas@gmail.com',
+        'telefono' => '662437243',
+        'postal' => '28400',
+        'ciudad' => 'Collado Villalba',
+        'domicilio' => 'C// Alfonso 13, Nº 151',
+        'contraseña' => 'Aaaaaaaa1#',
+        'web' => 'https://jairogarciarincon.com/clase/programacion-en-php/practica-formulario-de-entrada-de-datos',
+    ];
 
 
-    $uno = "//"; // (letras mayus y minus)     /^[a-zA-Z\s]*$/
-    $dos = "//"; // (letras mayus y minus)      /^[a-zA-Z\s]*$/
-    $tres = "//"; //  (letras mayus y minus y numeros) + @ + (letras solo minus) + . +(letras solo minus)                   /\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,6}\b/
-    $cuatro = "//"; //( 9 numeros del 0 al 9)
-    $cinco = "//"; //  ([CODIGO DEL C.P] + 3 NUMEROS DEL 0 AL 9)
-    $seis = "//"; // (Letras mayus y minus)
-    $siete = "//";// (Letras mayus y minus)
-    $ocho = "//";// (Letra minuscula y mayuscula, numeros y caracter especial)
+    if(isset($_POST['Confirmar'])) {
+        $nombre = filter_input(INPUT_POST, 'nombre', FILTER_SANITIZE_STRING);
+        $apellido = filter_input(INPUT_POST, 'apellido', FILTER_SANITIZE_STRING);
+        $email = filter_input(INPUT_POST, 'email', FILTER_SANITIZE_STRING);
+        $telefono = filter_input(INPUT_POST, 'telefono', FILTER_SANITIZE_STRING);
+        $postal = filter_input(INPUT_POST, 'postal', FILTER_SANITIZE_STRING);
+        $ciudad = filter_input(INPUT_POST, 'ciudad', FILTER_SANITIZE_STRING);
+        $domicilio = filter_input(INPUT_POST, 'domicilio', FILTER_SANITIZE_STRING);
+        $contrasena = filter_input(INPUT_POST, 'contraseña', FILTER_SANITIZE_STRING);
+        $web = filter_input(INPUT_POST, '', FILTER_SANITIZE_STRING);
+    }
 
 
-    $re1 = preg_match($uno,$nombre);
-    $re2 = preg_match($dos,$apellido);
+    $uno = "/^[a-zA-Z\s]*$/"; //(letras mayus y minus)     /^[a-zA-Z\s]*$/
+    $dos = "/^[a-zA-Z\s]*$/"; //(letras mayus y minus)      /^[a-zA-Z\s]*$/
+    $tres = "//"; // (letras mayus y minus y numeros) + @ + (letras solo minus) + . +(letras solo minus)                   /\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,6}\b/
+    $cuatro = "//"; //(9 numeros del 0 al 9)
+    $cinco = "//"; //([CODIGO DEL C.P] + 5 NUMEROS DEL 0 AL 9)
+    $seis = "/^[a-zA-Z\s]*$/"; //(Letras mayus y minus)
+    $siete = "//"; //(Nada)
+    $ocho = "//"; //(Letra minuscula y mayuscula, numeros y caracter especial)
+    $nueve = "//";
+
+
+    $re1 = preg_match('`[A-Za-z]`',$nombre);
+    $re2 = preg_match('`[A-Za-z]`',$apellido);
     $re3 = preg_match($tres,$email);
-    $re4 = preg_match($cuatro,$telefono);
+    $re4 = preg_match('`[0-9]`',$telefono);
     $re5 = preg_match($cinco,$postal);
-    $re6 = preg_match($seis,$ciudad);
+    $re6 = preg_match('`[A-Za-z]`',$ciudad);
     $re7 = preg_match($siete,$domicilio);
     $re8 = preg_match($ocho,$contrasena);
+    $re9 = preg_match($nueve,$web);
 
 
+    if ($re1 == 0){$error_nombre = "Solo puedes poner letras";}
+    if ($re2 == 0){$error_apellidos = "Solo puedes poner letras";}
+    if ($re3 == 0){$error_email = "";}
+    if ($re4 == 0){$error_telefono = "Solo puedes poner numeros";}
+    if ($re5 == 0){$error_postal = "Solo se permiten 5 numeros en estes campo";}
+    if ($re6 == 0){$error_ciudad = "Solo puedes poner letras";}
+    if ($re7 == 0){$error_domicilio = "";}
+    if ($re8 == 0){$error_contrasena = "";}
+    if ($re9 == 0){$error_web = "";}
 
 ?>
 
@@ -61,19 +79,6 @@
     <title>Practica 5</title>
     <link rel="stylesheet" href="css/style.css">
 </head>
-<?php
-    $muestra = [
-        'nombre' => 'JORGE',
-        'apellido' => 'Fuentes',
-        'email' => 'jorgeylucas@gmail.com',
-        'telefono' => '662437243',
-        'postal' => '28400',
-        'ciudad' => 'Collado Villalba',
-        'domicilio' => 'C// Alfonso 13, Nº 151',
-        'contraseña' => 'Aaaaaaaa1#'
-    ]
-?>
-
 <body>
 
 <div id="contenedor">
@@ -83,60 +88,46 @@
         <form name="myForm" action="index.php" method="post">
 
             <label for="fnombre">Nombre:</label>
-            <input type="text" name="nombre" id="nombre" value="<?php echo $muestra['nombre'] ?>"><br><br>
-            <?php if($re1 == 0){?>
-                    <p class="error">Solo puedes poner letras</p>
-            <?php } ?>
+            <input type="text" id="nombre" name="nombre" value="<?php echo $muestra['nombre'] ?>"><br><br>
+            <?php echo $error_nombre ?>
 
 
             <label for="fapellido">Apellidos:</label>
-            <input type="text" name="apellido" id="apellido" value="<?php echo $muestra['apellido'] ?>" ><br><br>
-            <?php if($re2 == 0){?>
-                <p class="error">Solo puedes poner letras</p>
-            <?php } ?>
+            <input type="text" id="apellido" name="apellido" value="<?php echo $muestra['apellido'] ?>"><br><br>
+            <?php echo $error_apellidos ?>
 
 
             <label for="femail">Email:</label>
-            <input type="email" name="email" value="<?php echo $muestra['email'] ?>"><br/><br/>
-            <?php if($re3 == 0){?>
-                <p class="error"></p>
-            <?php } ?>
+            <input type="email" id="email" name="email" value="<?php echo $muestra['email'] ?>"><br><br>
+            <?php echo $error_email ?>
 
 
             <label for="ftelefono">Telefono:</label>
             <input type="tel" id="telefono" name="telefono" value="<?php echo $muestra['telefono'] ?>"><br><br>
-            <?php if($re4 == 0){?>
-                <p class="error"></p>
-            <?php } ?>
+            <?php echo $error_telefono ?>
 
             <label for="fpostal">Código Postal:</label>
-            <input type="text" id="postal" name="postal" inputmode="numeric" value="<?php echo $muestra['postal'] ?>"><br><br>
-            <?php if($re5 == 0){?>
-                <p class="error"></p>
-            <?php } ?>
+            <input type="text" id="postal" name="postal" value="<?php echo $muestra['postal'] ?>"><br><br>
+            <?php echo $error_postal ?>
 
             <label for="fciudad">Ciudad:</label>
-            <input type='country' id="ciudad" name="ciudad" value="<?php echo $muestra['ciudad'] ?>"><br><br>
-            <?php if($re6 == 0){?>
-                <p class="error"></p>
-            <?php } ?>
+            <input type='text' id="ciudad" name="ciudad" value="<?php echo $muestra['ciudad'] ?>"><br><br>
+            <?php echo $error_ciudad ?>
 
             <label for="fdomicilio">Domicilio:</label>
-            <input type='country' id="domicilio" name="domicilio" value="<?php echo $muestra['domicilio'] ?>"><br><br>
-            <?php if($re7 == 0){?>
-                <p class="error"></p>
-            <?php } ?>
+            <input type='text' id="domicilio" name="domicilio" value="<?php echo $muestra['domicilio'] ?>"><br><br>
+            <?php echo $error_domicilio ?>
 
             <label for="fcontraseña">Contraseña:</label>
-            <input type="text" name="contraseña" id="contraseña" value="<?php echo $muestra['contraseña'] ?>" ><br /><br />
-            <?php if($re8 == 0){?>
-                <p class="error"></p>
-            <?php } ?>
+            <input type="text" id="contraseña" name="contraseña" value="<?php echo $muestra['contraseña'] ?>"><br><br>
+            <?php echo $error_contrasena ?>
 
+            <label for="fweb">Web:</label>
+            <input type="url" id="web" name="web" value="<?php echo $muestra['web'] ?>"><br><br>
+            <?php echo $error_web ?>
 
-            <select name="transporte">
-                <option value="Seleccione ciudad">Seleccione ciudad</option>
-
+            <select name="provincia">
+                <option value="Seleccione provincia">Seleccione provincia</option>
                 <?php
                     define("fileName", "archivo.txt");
                     global $ciudades;
@@ -149,13 +140,11 @@
                     }
                     echo $opciones;
                 ?>
-
                 </option>
             </select>
-
-            <input type="button" value="Confirmar" onClick="verificar()">
+                <br><br>
+            <input type="submit" name="Confirmar" value="Confirmar">
         </form>
-
     </div>
 </div>
 
