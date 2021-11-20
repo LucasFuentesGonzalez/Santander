@@ -30,14 +30,14 @@
     echo $nombre;
 
 
-    $uno = "//";
-    $dos = "//";
-    $tres = "//";
-    $cuatro = "//";
-    $cinco = "//";
-    $seis = "//";
-    $siete = "//";
-    $ocho = "//";
+    $uno = "//"; // (letras mayus y minus)     /^[a-zA-Z\s]*$/
+    $dos = "//"; // (letras mayus y minus)      /^[a-zA-Z\s]*$/
+    $tres = "//"; //  (letras mayus y minus y numeros) + @ + (letras solo minus) + . +(letras solo minus)                   /\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,6}\b/
+    $cuatro = "//"; //( 9 numeros del 0 al 9)
+    $cinco = "//"; //  ([CODIGO DEL C.P] + 3 NUMEROS DEL 0 AL 9)
+    $seis = "//"; // (Letras mayus y minus)
+    $siete = "//";// (Letras mayus y minus)
+    $ocho = "//";// (Letra minuscula y mayuscula, numeros y caracter especial)
 
 
     $re1 = preg_match($uno,$nombre);
