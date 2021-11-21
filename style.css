@@ -13,31 +13,16 @@
     }
 
     //Comprobamos que se cumplan las condiciones
-    //Patron para comprobar si contiene numeros
-    $re1 = preg_match("/[0-9]/",$nombre);
-
-    //Patron para comprobar si contiene numeros
-    $re2 = preg_match("/[0-9]/",$apellido);
-
-    //
-    $re3 = preg_match("/^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-ZÑa-zñ]{2,6}+$/",$email);
-
-    //
-    $re4 = preg_match("/^([0-9]{9,9})$/",$telefono);
-
-    //
-    $re5 = preg_match("/^([0-9]{5,5})$/",$postal);
-
-    //Patron para comprobar si contiene numeros
-    $re6 = preg_match("/[0-9]/",$ciudad);
-
-    //Patron para que aparezcan letras
-    $re7 = preg_match("/[A-Za-zÑn]/",$domicilio);
-
-    //
+    $re1 = preg_match("/[0-9]/",$nombre);//Patron para comprobar si contiene numeros
+    $re2 = preg_match("/[0-9]/",$apellido);//Patron para comprobar si contiene numeros
+    $re3 = preg_match("/^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-ZÑa-zñ]+$/",$email);//Patron para comprobar el email
+    $re4 = preg_match("/^([0-9]{9,9})$/",$telefono);//Patron para comprobar el telefono
+    $re5 = preg_match("/^([0-9]{5,5})$/",$postal);//Patron para comprobar el codigo postal
+    $re6 = preg_match("/[0-9]/",$ciudad);//Patron para comprobar si contiene numeros
+    $re7 = preg_match("/[A-Za-zÑn]/",$domicilio);//Patron para que aparezcan letras
+        //Patron para que aparezcan entre o 8 y 16 caracteres, almenos un numero, una mayusculam una minuscula y un caracter
     $re8 = preg_match("/((?=.*?[A-ZÑ])(?=.*?[a-zñ])(?=.*?[0-9])(?=.*?[^A-Za-z0-9])).{8,16}/",$contrasena);
-
-    //
+        //Patron para comprobar una direccion web
     $re9 = preg_match("/\b(?:(?:https?|ftp):\/\/|www\.)[-a-z0-9+&@#\/%?=~_|!:,.;]*[-a-z0-9+&@#\/%=~_|](\.)[a-z]{2}/i",$web);
 
 
@@ -88,7 +73,7 @@
     <link rel="shortcut icon" type="image/x-icon" href="https://i.imgur.com/NY1I7v3.png" />
 </head>
 <body>
-
+<!--Añadimos el logo de santander-->
 <img class="santander" src="https://i.imgur.com/R0A5EZP.png">
 
 <div id="contenedor">
@@ -100,56 +85,56 @@
             <div class="interior">
                 <label for="nombre">Nombre:</label>
                 <input class="input" type="text" id="nombre" name="nombre" placeholder="Inserte su nombre">
-                <p class="error"><?php echo $error_nombre ?></p>
+                <p class="error"><?php echo $error_nombre ?></p><!--Mostramos el error de nombre-->
             </div>
 
 
             <div class="interior">
                 <label for="apellido">Apellidos:</label>
                 <input class="input" type="text" id="apellido" name="apellido" placeholder="Inserte su apellido">
-                <p class="error"><?php echo $error_apellidos ?></p>
+                <p class="error"><?php echo $error_apellidos ?></p><!--Mostramos el error de apellidos-->
             </div>
 
             <div class="interior">
                 <label for="email">Email:</label>
                 <input class="input" type="email" id="email" name="email" placeholder="Inserte su email">
-                <p class="error"><?php echo $error_email ?></p>
+                <p class="error"><?php echo $error_email ?></p><!--Mostramos el error de email-->
             </div>
 
             <div class="interior">
                 <label for="telefono">Telefono:</label>
                 <input class="input" type="tel" id="telefono" name="telefono" placeholder="Inserte su telefono">
-                <p class="error"><?php echo $error_telefono ?></p>
+                <p class="error"><?php echo $error_telefono ?></p><!--Mostramos el error de telefono-->
             </div>
 
             <div class="interior">
                 <label for="postal">Código Postal:</label>
                 <input class="input" type="text" id="postal" name="postal" placeholder="Inserte su Código Postal">
-                <p class="error"><?php echo $error_postal ?></p>
+                <p class="error"><?php echo $error_postal ?></p><!--Mostramos el error de codigo postal-->
             </div>
 
             <div class="interior">
                 <label for="ciudad">Ciudad:</label>
                 <input class="input" type='text' id="ciudad" name="ciudad" placeholder="Inserte su ciudad">
-                <p class="error"><?php echo $error_ciudad ?></p>
+                <p class="error"><?php echo $error_ciudad ?></p><!--Mostramos el error de ciudad-->
             </div>
 
             <div class="interior">
                 <label for="domicilio">Domicilio:</label>
                 <input class="input" type='text' id="domicilio" name="domicilio" placeholder="Inserte su domicilio">
-                <p class="error"><?php echo $error_domicilio ?></p>
+                <p class="error"><?php echo $error_domicilio ?></p><!--Mostramos el error de domicilio-->
             </div>
 
             <div class="interior">
                 <label for="contraseña">Contraseña:</label>
                 <input class="input" type="text" id="contraseña" name="contraseña" placeholder="Inserte su contraseña">
-                <p class="error"><?php echo $error_contrasena ?></p>
+                <p class="error"><?php echo $error_contrasena ?></p><!--Mostramos el error de contrasena-->
             </div>
 
             <div class="interior">
                 <label for="web">Web:</label>
                 <input class="input" type="url" id="web" name="web" placeholder="Inserte web">
-                <p class="error"><?php echo $error_web ?></p>
+                <p class="error"><?php echo $error_web ?></p><!--Mostramos el error de web-->
             </div><br>
 
             <div class="interior" style="margin-left: 40px;">
@@ -157,17 +142,18 @@
                 <select class="input" name="provincia" style="margin-left: 25px;">
                     <option value="Seleccione provincia">Seleccione provincia</option>
                     <?php
-                    $lineas=file_get_contents("archivo.txt");
-                    $ciudades=explode("\n",$lineas);
-
-                    foreach($ciudades as $ciudad){
-                        $opciones.='<option value="'.$ciudad.'">'.$ciudad.'</option>';
+                    $lineas=file_get_contents("archivo.txt");//Indicamos cual es nuestro fichero con las provincias
+                    $provincias=explode("\n",$lineas);
+                    //Mediante un foreach sacamos y mostramos las provincias con su codigo
+                    foreach($provincias as $provincia){
+                        $opciones.='<option value="'.$provincia.'">'.$provincia.'</option>';
                     }
-                    echo $opciones;
+                    echo $opciones;//Imprimimos las provincias en el select
                     ?>
                     </option>
                 </select>
             </div><br><br>
+            <!--Creamos el boton para enviar el formulario-->
             <input class="enviar" type="submit" name="Confirmar" value="Confirmar">
         </form>
 
