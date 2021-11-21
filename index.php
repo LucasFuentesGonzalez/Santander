@@ -48,15 +48,15 @@
     $nueve = "//";
 
 
-    $re1 = preg_match('`[A-Za-z]`',$nombre);
-    $re2 = preg_match('`[A-Za-z]`',$apellido);
-    $re3 = preg_match($tres,$email);
-    $re4 = preg_match('`[0-9]`',$telefono);
-    $re5 = preg_match($cinco,$postal);
-    $re6 = preg_match('`[A-Za-z]`',$ciudad);
-    $re7 = preg_match($siete,$domicilio);
-    $re8 = preg_match("/((?=.?[A-Z])(?=.?[a-z])(?=.?[0-9])(?=.?[^A-Za-z0-9])).{8,16}/",$contrasena);
-    $re9 = preg_match($nueve,$web);
+    $re1 = preg_match("/[A-Za-z]/",$nombre);
+    $re2 = preg_match("/[A-Za-z]/",$apellido);
+    $re3 = preg_match("/^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,6}+$/",$email);
+    $re4 = preg_match("/[0-9]{9,9}/",$telefono);
+    $re5 = preg_match("/[0-9]{5,5}/",$postal);
+    $re6 = preg_match("/[A-Za-z]/",$ciudad);
+    $re7 = preg_match([],$domicilio);
+    $re8 = preg_match("/((?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[^A-Za-z0-9])).{8,16}/",$contrasena);
+    $re9 = preg_match([],$web);
 
     $error_nombre = " ";
     $error_apellidos = " ";
