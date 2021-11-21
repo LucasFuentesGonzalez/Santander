@@ -22,12 +22,14 @@ body{
     float: right;
 }
 
-h1, h2{
+h1{
     text-align: center;
     padding-top: 35px;
     font-family: sans-serif;
     color: black;
+    font-size: 27px;
 }
+
 
 p{
     text-align: justify;
