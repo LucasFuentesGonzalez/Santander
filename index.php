@@ -1,72 +1,62 @@
 <?php
 
-$meses = [];
-$string = file_get_contents("archivo.txt");
-$array = explode("\n",$string);
-foreach ($array as $fila){
-    $item = explode(" ",$fila);
-    $meses[] = [
-        'numero' => $item[0],
-        'nombre' => $item[1]
+    $meses = [];
+    $string = file_get_contents("archivo.txt");
+    $array = explode("\n",$string);
+    foreach ($array as $fila){
+        $item = explode(" ",$fila);
+        $meses[] = [
+            'numero' => $item[0],
+            'nombre' => $item[1]
+        ];
+    }
+
+    $muestra = [
+        'nombre' => 'JORGE',
+        'apellido' => 'Fuentes',
+        'email' => 'jorgeylucas@gmail.com',
+        'telefono' => '662437243',
+        'postal' => '28400',
+        'ciudad' => 'Collado Villalba',
+        'domicilio' => 'C// Alfonso 13, Nº 151',
+        'contraseña' => 'Aaaaaaaa1#',
+        'web' => 'https://jairogarciarincon.com/clase/programacion-en-php/practica-formulario-de-entrada-de-datos',
     ];
-}
-
-$muestra = [
-    'nombre' => 'JORGE',
-    'apellido' => 'Fuentes',
-    'email' => 'jorgeylucas@gmail.com',
-    'telefono' => '662437243',
-    'postal' => '28400',
-    'ciudad' => 'Collado Villalba',
-    'domicilio' => 'C// Alfonso 13, Nº 151',
-    'contraseña' => 'Aaaaaaaa1#',
-    'web' => 'https://jairogarciarincon.com/clase/programacion-en-php/practica-formulario-de-entrada-de-datos',
-];
 
 
-if(isset($_POST['Confirmar'])) {
-    $nombre = filter_input(INPUT_POST, 'nombre', FILTER_SANITIZE_STRING);
-    $apellido = filter_input(INPUT_POST, 'apellido', FILTER_SANITIZE_STRING);
-    $email = filter_input(INPUT_POST, 'email', FILTER_SANITIZE_STRING);
-    $telefono = filter_input(INPUT_POST, 'telefono', FILTER_SANITIZE_STRING);
-    $postal = filter_input(INPUT_POST, 'postal', FILTER_SANITIZE_STRING);
-    $ciudad = filter_input(INPUT_POST, 'ciudad', FILTER_SANITIZE_STRING);
-    $domicilio = filter_input(INPUT_POST, 'domicilio', FILTER_SANITIZE_STRING);
-    $contrasena = filter_input(INPUT_POST, 'contraseña', FILTER_SANITIZE_STRING);
-    $web = filter_input(INPUT_POST, 'web', FILTER_SANITIZE_STRING);
-}
+    if(isset($_POST['Confirmar'])) {
+        $nombre = filter_input(INPUT_POST, 'nombre', FILTER_SANITIZE_STRING);
+        $apellido = filter_input(INPUT_POST, 'apellido', FILTER_SANITIZE_STRING);
+        $email = filter_input(INPUT_POST, 'email', FILTER_SANITIZE_STRING);
+        $telefono = filter_input(INPUT_POST, 'telefono', FILTER_SANITIZE_STRING);
+        $postal = filter_input(INPUT_POST, 'postal', FILTER_SANITIZE_STRING);
+        $ciudad = filter_input(INPUT_POST, 'ciudad', FILTER_SANITIZE_STRING);
+        $domicilio = filter_input(INPUT_POST, 'domicilio', FILTER_SANITIZE_STRING);
+        $contrasena = filter_input(INPUT_POST, 'contraseña', FILTER_SANITIZE_STRING);
+        $web = filter_input(INPUT_POST, 'web', FILTER_SANITIZE_STRING);
+    }
+
+    $re1 = preg_match("/[A-Za-z]/",$nombre);
+    $re2 = preg_match("/[A-Za-z]/",$apellido);
+    $re3 = preg_match("/^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,6}+$/",$email);
+    $re4 = preg_match("/[0-9]{9,9}/",$telefono);
+    $re5 = preg_match("/[0-9]{5,5}/",$postal);
+    $re6 = preg_match("/[A-Za-z]/",$ciudad);
+    $re7 = preg_match("/[A-Za-z]/",$domicilio); //FALTA ESTE
+    $re8 = preg_match("/((?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[^A-Za-z0-9])).{8,16}/",$contrasena);
+    $re9 = preg_match("/[A-Za-z]/",$web); //FALTA ESTE
 
 
-$uno = "/^[a-zA-Z\s]*$/"; //(letras mayus y minus)     /^[a-zA-Z\s]*$/
-$dos = "/^[a-zA-Z\s]*$/"; //(letras mayus y minus)      /^[a-zA-Z\s]*$/
-$tres = "//"; // (letras mayus y minus y numeros) + @ + (letras solo minus) + . +(letras solo minus) /\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,6}\b/
-$cuatro = "//"; //(9 numeros del 0 al 9)
-$cinco = "//"; //([CODIGO DEL C.P] + 5 NUMEROS DEL 0 AL 9)
-$seis = "/^[a-zA-Z\s]*$/"; //(Letras mayus y minus)
-$siete = "//"; //(Nada)
-$ocho = "//"; //(Letra minuscula y mayuscula, numeros y caracter especial)
-$nueve = "//";
+    $error_nombre = " ";
+    $error_apellidos = " ";
+    $error_email = " ";
+    $error_telefono = " ";
+    $error_postal = " ";
+    $error_ciudad = " ";
+    $error_domicilio = " ";
+    $error_contrasena = " ";
+    $error_web = " ";
 
-
-$re1 = preg_match("/[A-Za-z]/",$nombre);
-$re2 = preg_match("/[A-Za-z]/",$apellido);
-$re3 = preg_match("/^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,6}+$/",$email);
-$re4 = preg_match("/[0-9]{9,9}/",$telefono);
-$re5 = preg_match("/[0-9]{5,5}/",$postal);
-$re6 = preg_match("/[A-Za-z]/",$ciudad);
-$re7 = preg_match("/[A-Za-z]/",$domicilio);
-$re8 = preg_match("/((?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[^A-Za-z0-9])).{8,16}/",$contrasena);
-$re9 = preg_match("/[A-Za-z]/",$web);
-
-$error_nombre = " ";
-$error_apellidos = " ";
-$error_email = " ";
-$error_telefono = " ";
-$error_postal = " ";
-$error_ciudad = " ";
-$error_domicilio = " ";
-$error_contrasena = " ";
-$error_web = " ";
 
     if(isset($_POST['Confirmar'])) {
         if ($re1 == 0){$error_nombre = "Solo puedes poner letras<br>";}
@@ -145,18 +135,18 @@ $error_web = " ";
 
             <select name="provincia">
                 <option value="Seleccione provincia">Seleccione provincia</option>
-                <?php
-                define("fileName", "archivo.txt");
-                global $ciudades;
-                global $opciones;
-                $lineas=file_get_contents(fileName);
-                $ciudades=explode("\n",$lineas);
+                    <?php
+                        define("fileName", "archivo.txt");
+                        global $ciudades;
+                        global $opciones;
+                        $lineas=file_get_contents(fileName);
+                        $ciudades=explode("\n",$lineas);
 
-                foreach($ciudades as $ciudad){
-                    $opciones.='<option value="'.$ciudad.'">'.$ciudad.'</option>';
-                }
-                echo $opciones;
-                ?>
+                        foreach($ciudades as $ciudad){
+                            $opciones.='<option value="'.$ciudad.'">'.$ciudad.'</option>';
+                        }
+                        echo $opciones;
+                    ?>
                 </option>
 
             </select><br><br>
