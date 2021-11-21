@@ -96,7 +96,7 @@ if ($re9 == 0){$error_web = "Introduce un link válido". "<br>";}
 
         <form action="index.php" method="post">
 
-                        <label for="nombre">Nombre:</label>
+            <label for="nombre">Nombre:</label>
             <input type="text" id="nombre" name="nombre" value="<?php echo $muestra['nombre'] ?>"><br><br>
             <p class="error"><?php echo $error_nombre ?></p>
 
