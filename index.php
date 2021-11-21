@@ -96,49 +96,49 @@ if ($re9 == 0){$error_web = "Introduce un link válido". "<br>";}
 
         <form action="index.php" method="post">
 
-            <label for="nombre">Nombre:</label>
+                        <label for="nombre">Nombre:</label>
             <input type="text" id="nombre" name="nombre" value="<?php echo $muestra['nombre'] ?>"><br><br>
-            <?php echo $error_nombre ?>
+            <p class="error"><?php echo $error_nombre ?></p>
 
 
             <label for="apellido">Apellidos:</label>
             <input type="text" id="apellido" name="apellido" value="<?php echo $muestra['apellido'] ?>"><br><br>
-            <?php echo $error_apellidos ?>
+            <p class="error"><?php echo $error_apellidos ?></p>
 
 
             <label for="email">Email:</label>
             <input type="email" id="email" name="email" value="<?php echo $muestra['email'] ?>"><br><br>
-            <?php echo $error_email ?>
+            <p class="error"><?php echo $error_email ?></p>
 
 
             <label for="telefono">Telefono:</label>
             <input type="tel" id="telefono" name="telefono" value="<?php echo $muestra['telefono'] ?>"><br><br>
-            <?php echo $error_telefono ?>
+            <p class="error"><?php echo $error_telefono ?></p>
 
 
             <label for="postal">Código Postal:</label>
             <input type="text" id="postal" name="postal" value="<?php echo $muestra['postal'] ?>"><br><br>
-            <?php echo $error_postal ?>
+            <p class="error"><?php echo $error_postal ?></p>
 
 
             <label for="ciudad">Ciudad:</label>
             <input type='text' id="ciudad" name="ciudad" value="<?php echo $muestra['ciudad'] ?>"><br><br>
-            <?php echo $error_ciudad ?>
+            <p class="error"><?php echo $error_ciudad ?></p>
 
 
             <label for="domicilio">Domicilio:</label>
             <input type='text' id="domicilio" name="domicilio" value="<?php echo $muestra['domicilio'] ?>"><br><br>
-            <?php echo $error_domicilio ?>
+            <p class="error"><?php echo $error_domicilio ?></p>
 
 
             <label for="contraseña">Contraseña:</label>
             <input type="text" id="contraseña" name="contraseña" value="<?php echo $muestra['contraseña'] ?>"><br><br>
-            <?php echo $error_contrasena ?>
+            <p class="error"><?php echo $error_contrasena ?></p>
 
 
             <label for="web">Web:</label>
             <input type="url" id="web" name="web" value="<?php echo $muestra['web'] ?>"><br><br>
-            <?php echo $error_web ?>
+            <p class="error"><?php echo $error_web ?></p>
 
 
             <select name="provincia">
