@@ -57,6 +57,16 @@ if(isset($_POST['Confirmar'])) {
     if ($re7 == 0){$error_domicilio = "Solo puedes poner letras<br>";}
     if ($re8 == 0){$error_contrasena = "Debes poner una contraseña con una mayuscula, una minuscula, un numero y un caracter especial<br>";}
     if ($re9 == 0){$error_web = "Introduce un link válido<br>";}
+
+    if (empty($nombre)){$error_nombre = "Introduce un nombre<br>";}
+    if (empty($apellidos)){$error_apellidos = "Introduce un apellido<br>";}
+    if (empty($email)){$error_email = "Introduce un email<br>";}
+    if (empty($telefono)){$error_telefono = "Introduce un telefono<br>";}
+    if (empty($postal)){$error_postal = "Introduce un codigo postal<br>";}
+    if (empty($ciudad)){$error_ciudad = "Introduce una ciudad<br>";}
+    if (empty($domicilio)){$error_domicilio = "Introduce un domicilio<br>";}
+    if (empty($contrasena)){$error_contrasena = "Introduce tu contraseña<br>";}
+    if (empty($web)){$error_web = "Introduce una web<br>";}
 }
 
 ?>
