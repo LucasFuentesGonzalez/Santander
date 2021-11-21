@@ -13,9 +13,8 @@ body{
     width: 599px;
     margin: auto;
     background-color: white;
-    border-radius: 8px 8px 8px 8px;
-    border: 2px solid black;
-    height: 750px;
+    border: 2px solid rgba(0, 0, 0, 0.2);
+    height: 838px;
     float: right;
     margin-right: 40px;
     text-align: center;
@@ -58,13 +57,39 @@ h3{
 }
 
 .error{
-    background-color: #790000;
-    color: white;
+    color: darkred;
     width: 400px;
     text-align: center;
+    font-size: 13px;
     margin-left: 96px;
+    font-weight: bold;
+    margin-top: 3px;
+
 }
 .santander{
     margin-top: -51px;
     margin-left: -10px;
+}
+form{
+    font-size: 20px;
+
+}
+label{
+    display: inline-block;
+    margin-top: 14px;
+}
+
+.interior{
+    display: inline-block;
+    margin-left: -90px;
+}
+
+.input{
+    float: right;
+    margin-left: -80px;
+    margin-top: 17px;
+    text-align: center;
+}
+.enviar{
+    text-align: center;
 }
