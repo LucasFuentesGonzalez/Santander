@@ -1,4 +1,73 @@
+<?php
 
+    if(isset($_POST['Confirmar'])) { //Guardamos los inputs en estas variables
+        $nombre = filter_input(INPUT_POST, 'nombre', FILTER_SANITIZE_STRING);
+        $apellido = filter_input(INPUT_POST, 'apellido', FILTER_SANITIZE_STRING);
+        $email = filter_input(INPUT_POST, 'email', FILTER_SANITIZE_STRING);
+        $telefono = filter_input(INPUT_POST, 'telefono', FILTER_SANITIZE_STRING);
+        $postal = filter_input(INPUT_POST, 'postal', FILTER_SANITIZE_STRING);
+        $ciudad = filter_input(INPUT_POST, 'ciudad', FILTER_SANITIZE_STRING);
+        $domicilio = filter_input(INPUT_POST, 'domicilio', FILTER_SANITIZE_STRING);
+        $contrasena = filter_input(INPUT_POST, 'contraseña', FILTER_SANITIZE_STRING);
+        $web = filter_input(INPUT_POST, 'web', FILTER_SANITIZE_STRING);
+    }
+
+    //Comprobamos que se cumplan las condiciones
+    $re1 = preg_match("/[0-9]/",$nombre);//Patron para comprobar si contiene numeros
+    $re2 = preg_match("/[0-9]/",$apellido);//Patron para comprobar si contiene numeros
+    $re3 = preg_match("/^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-ZÑa-zñ]+$/",$email);//Patron para comprobar el email
+    $re4 = preg_match("/^([0-9]{9,9})$/",$telefono);//Patron para comprobar el telefono
+    $re5 = preg_match("/^([0-9]{5,5})$/",$postal);//Patron para comprobar el codigo postal
+    $re6 = preg_match("/[0-9]/",$ciudad);//Patron para comprobar si contiene numeros
+    $re7 = preg_match("/[A-Za-zÑn]/",$domicilio);//Patron para que aparezcan letras
+        //Patron para que aparezcan entre o 8 y 16 caracteres, almenos un numero, una mayusculam una minuscula y un caracter
+    $re8 = preg_match("/((?=.*?[A-ZÑ])(?=.*?[a-zñ])(?=.*?[0-9])(?=.*?[^A-Za-z0-9])).{8,16}/",$contrasena);
+        //Patron para comprobar una direccion web
+    $re9 = preg_match("/\b(?:(?:https?|ftp):\/\/|www\.)[-a-z0-9+&@#\/%?=~_|!:,.;]*[-a-z0-9+&@#\/%=~_|](\.)[a-z]{2}/i",$web);
+
+
+    //Declaramos las variables para mostrar los errores
+    $error_nombre = " ";
+    $error_apellidos = " ";
+    $error_email = " ";
+    $error_telefono = " ";
+    $error_postal = " ";
+    $error_ciudad = " ";
+    $error_domicilio = " ";
+    $error_contrasena = " ";
+    $error_web = " ";
+
+    //En caso de que se cumplan las codiciones mostraremos los siguientes mensajes
+    if(isset($_POST['Confirmar'])) {
+        if ($re1 == 1){$error_nombre = "*Solo puedes introducir letras<br>";}
+        if ($re2 == 1){$error_apellidos = "*Solo puedes introducir letras<br>";}
+        if ($re3 == 0){$error_email = "*Introduce un email válido<br>";}
+        if ($re4 == 0){$error_telefono = "*Debes introducir 9 numeros<br>";}
+        if ($re5 == 0){$error_postal = "*Solo se permiten 5 numeros en estes campo<br>";}
+        if ($re6 == 1){$error_ciudad = "*Solo puedes introducir letras<br>";}
+        if ($re7 == 0){$error_domicilio = "*Solo puedes introducir letras<br>";}
+        if ($re8 == 0){$error_contrasena = "*Debes introducir una contraseña de entre 8 a 16 caracteres con almenos una mayuscula, una minuscula, un numero y un caracter especial<br>";}
+        if ($re9 == 0){$error_web = "*Introduce un link válido<br>";}
+
+        //En caso de que no rellenen los inputs apareceran los siguientes errores
+        if (empty($nombre)){$error_nombre = "*Introduce un nombre<br>";}
+        if (empty($apellidos)){$error_apellidos = "*Introduce un apellido<br>";}
+        if (empty($email)){$error_email = "*Introduce un email<br>";}
+        if (empty($telefono)){$error_telefono = "*Introduce un telefono<br>";}
+        if (empty($postal)){$error_postal = "*Introduce un codigo postal<br>";}
+        if (empty($ciudad)){$error_ciudad = "*Introduce una ciudad<br>";}
+        if (empty($domicilio)){$error_domicilio = "*Introduce un domicilio<br>";}
+        if (empty($contrasena)){$error_contrasena = "*Introduce tu contraseña<br>";}
+        if (empty($web)){$error_web = "*Introduce una web<br>";}
+    }
+
+?>
+
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
     <title>Login Santander</title>
     <link rel="stylesheet" href="css/style.css">
     <link rel="shortcut icon" type="image/x-icon" href="https://i.imgur.com/NY1I7v3.png" />
