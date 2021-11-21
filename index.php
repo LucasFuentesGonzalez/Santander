@@ -68,15 +68,15 @@ $error_domicilio = " ";
 $error_contrasena = " ";
 $error_web = " ";
 
-if ($re1 == 0){$error_nombre = "Solo puedes poner letras" . "<br>";}
-if ($re2 == 0){$error_apellidos = "Solo puedes poner letras". "<br>";}
-if ($re3 == 0){$error_email = "Introduce un email válido". "<br>";}
-if ($re4 == 0){$error_telefono = "Solo puedes poner numeros". "<br>";}
-if ($re5 == 0){$error_postal = "Solo se permiten 5 numeros en estes campo". "<br>";}
-if ($re6 == 0){$error_ciudad = "Solo puedes poner letras". "<br>";}
-if ($re7 == 0){$error_domicilio = "Solo puedes poner letras". "<br>";}
-if ($re8 == 0){$error_contrasena = "Debes poner una contraseña con una mayuscula, una minuscula, un numero y un caracter especial". "<br>";}
-if ($re9 == 0){$error_web = "Introduce un link válido". "<br>";}
+if ($re1 == 0){$error_nombre = "Solo puedes poner letras" . "<br><br>";}
+if ($re2 == 0){$error_apellidos = "Solo puedes poner letras" . "<br><br>";}
+if ($re3 == 0){$error_email = "Introduce un email válido" . "<br><br>";}
+if ($re4 == 0){$error_telefono = "Solo puedes poner numeros" . "<br><br>";}
+if ($re5 == 0){$error_postal = "Solo se permiten 5 numeros en estes campo" . "<br><br>";}
+if ($re6 == 0){$error_ciudad = "Solo puedes poner letras" . "<br><br>";}
+if ($re7 == 0){$error_domicilio = "Solo puedes poner letras" . "<br><br>";}
+if ($re8 == 0){$error_contrasena = "Debes poner una contraseña con una mayuscula, una minuscula, un numero y un caracter especial" . "<br><br>";}
+if ($re9 == 0){$error_web = "Introduce un link válido" . "<br><br>";}
 
 ?>
 
