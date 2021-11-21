@@ -63,8 +63,9 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>Practica 5</title>
+    <title>Login Santander</title>
     <link rel="stylesheet" href="css/style.css">
+    <link rel="shortcut icon" type="image/x-icon" href="https://i.imgur.com/NY1I7v3.png" />
 </head>
 <body>
 
@@ -155,5 +156,3 @@
 
 </body>
 </html>
-
-
