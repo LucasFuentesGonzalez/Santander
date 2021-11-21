@@ -11,17 +11,6 @@ foreach ($array as $fila){
     ];
 }
 
-$muestra = [
-    'nombre' => 'JORGE',
-    'apellido' => 'Fuentes',
-    'email' => 'jorgeylucas@gmail.com',
-    'telefono' => '662437243',
-    'postal' => '28400',
-    'ciudad' => 'Collado Villalba',
-    'domicilio' => 'C// Alfonso 13, Nº 151',
-    'contraseña' => '********',
-    'web' => 'https://jairogarciarincon.com/clase/programacion-en-php/practica-formulario-de-entrada-de-datos',
-];
 
 
 if(isset($_POST['Confirmar'])) {
@@ -90,49 +79,60 @@ if(isset($_POST['Confirmar'])) {
 
         <form action="index.php" method="post">
 
+            <div class="interior">
             <label for="nombre">Nombre:</label>
-            <input type="text" id="nombre" name="nombre" value="<?php echo $muestra['nombre'] ?>"><br><br>
+            <input class="input" type="text" id="nombre" name="nombre" placeholder="Inserte su nombre">
             <p class="error"><?php echo $error_nombre ?></p>
+            </div>
 
 
+            <div class="interior">
             <label for="apellido">Apellidos:</label>
-            <input type="text" id="apellido" name="apellido" value="<?php echo $muestra['apellido'] ?>"><br><br>
+            <input class="input" type="text" id="apellido" name="apellido" placeholder="Inserte su apellido">
             <p class="error"><?php echo $error_apellidos ?></p>
+            </div>
 
-
+            <div class="interior">
             <label for="email">Email:</label>
-            <input type="email" id="email" name="email" value="<?php echo $muestra['email'] ?>"><br><br>
+            <input class="input" type="email" id="email" name="email" placeholder="Inserte su email">
             <p class="error"><?php echo $error_email ?></p>
+            </div>
 
-
+            <div class="interior">
             <label for="telefono">Telefono:</label>
-            <input type="tel" id="telefono" name="telefono" value="<?php echo $muestra['telefono'] ?>"><br><br>
+            <input class="input" type="tel" id="telefono" name="telefono" placeholder="Inserte su telefono">
             <p class="error"><?php echo $error_telefono ?></p>
+            </div>
 
-
+            <div class="interior">
             <label for="postal">Código Postal:</label>
-            <input type="text" id="postal" name="postal" value="<?php echo $muestra['postal'] ?>"><br><br>
+            <input class="input" type="text" id="postal" name="postal" placeholder="Inserte su Código Postal">
             <p class="error"><?php echo $error_postal ?></p>
+            </div>
 
-
+            <div class="interior">
             <label for="ciudad">Ciudad:</label>
-            <input type='text' id="ciudad" name="ciudad" value="<?php echo $muestra['ciudad'] ?>"><br><br>
+            <input class="input" type='text' id="ciudad" name="ciudad" placeholder="Inserte su ciudad">
             <p class="error"><?php echo $error_ciudad ?></p>
+            </div>
 
-
+            <div class="interior">
             <label for="domicilio">Domicilio:</label>
-            <input type='text' id="domicilio" name="domicilio" value="<?php echo $muestra['domicilio'] ?>"><br><br>
+            <input class="input" type='text' id="domicilio" name="domicilio" placeholder="Inserte su domicilio">
             <p class="error"><?php echo $error_domicilio ?></p>
+            </div>
 
-
+            <div class="interior">
             <label for="contraseña">Contraseña:</label>
-            <input type="text" id="contraseña" name="contraseña" value="<?php echo $muestra['contraseña'] ?>"><br><br>
+            <input class="input" type="text" id="contraseña" name="contraseña" placeholder="Inserte su contraseña">
             <p class="error"><?php echo $error_contrasena ?></p>
+            </div>
 
-
+            <div class="interior">
             <label for="web">Web:</label>
-            <input type="url" id="web" name="web" value="<?php echo $muestra['web'] ?>"><br><br>
+            <input class="input" type="url" id="web" name="web" placeholder="Inserte web">
             <p class="error"><?php echo $error_web ?></p>
+            </div><br><br>
 
 
             <select name="provincia">
@@ -153,7 +153,7 @@ if(isset($_POST['Confirmar'])) {
 
             </select><br><br>
 
-            <input type="submit" name="Confirmar" value="Confirmar">
+            <input class="enviar" type="submit" name="Confirmar" value="Confirmar">
         </form>
     </div>
 </div>
